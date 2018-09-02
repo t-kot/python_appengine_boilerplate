@@ -1,0 +1,11 @@
+*.pyc
+static
+data
+*.log
+node_modules
+.DS_Store
+cert
+static
+.vscode
+*.pyc
+.envrc

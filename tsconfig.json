@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "outDir": "./static/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "target": "es5",
+    "jsx": "react",
+    "downlevelIteration": true,
+    "allowJs": true,
+    "lib": [
+      "es5",
+      "es2015",
+      "es2015.promise",
+      "es2017",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ],
+    "experimentalDecorators": true
+  },
+  "include": [
+    "./ts/**/*.ts",
+    "./index.d.ts"
+  ],
+  "files": [
+    "./index.d.ts"
+  ]
+}

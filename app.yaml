@@ -1,0 +1,17 @@
+runtime: python37
+
+handlers:
+  - url: /public/(.*)$
+    static_files: public/\1
+    upload: public/(.*)
+  - url: /static/(.*\.(js|css))$
+    static_files: static/build/\1
+    upload: static/build/.*\.(js|css)$
+  - url: /static/(.*)$
+    static_files: static/\1
+    upload: static/(.*)
+  - url: /.*
+    script: auto
+
+env_variables:
+  APP_ENV: production

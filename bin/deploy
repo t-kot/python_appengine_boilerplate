@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -ex
+
+docker-compose exec app pip install -r requirements.txt
+docker-compose exec node rm -rf static/build
+docker-compose exec node yarn build
+docker-compose exec app gcloud auth activate-service-account $SERVICE_ACCOUNT --key-file $SERVICE_ACCOUNT_KEY
+docker-compose exec app gcloud app deploy --quiet --project $PROJECT_ID app.yaml

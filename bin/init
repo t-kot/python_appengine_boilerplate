@@ -1,0 +1,4 @@
+#!/bin/sh
+
+alias dc='docker-compose'
+dc up

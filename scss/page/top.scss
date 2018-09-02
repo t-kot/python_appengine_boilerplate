@@ -1,0 +1,70 @@
+.page-top {
+  .container {
+    padding: 0 20px;
+  }
+  .description {
+    margin: 60px 0;
+    font-size: 1.2rem;
+  }
+  .start-button {
+    text-align: center;
+    margin: 50px 0;
+
+    .notification {
+      max-width: 300px;
+      font-size: .8rem;
+      color: #888;
+      margin: 10px auto;
+    }
+  }
+
+  .twitter-login {
+    background: #00aced;
+    padding: 0.7rem 2rem;
+    display: inline-block;
+    color: white;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    line-height: 30px;
+
+    &:hover {
+      text-decoration: none;
+      background: #1dcaff;
+    }
+
+    .text {
+      font-size: 20px;
+    }
+  }
+  .section-title {
+    font-size: 1.4rem;
+    margin: 30px 0;
+  }
+  .howto {
+    margin: 50px 0 70px;
+  }
+  .howto-item {
+    h3 {
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 25px;
+      position: relative;
+      padding-left: 30px;
+    }
+    .num {
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      width: 25px;
+      line-height: 25px;
+      background: $color-blue;
+      color: white;
+      text-align: center;
+      border-radius: 50%;
+      font-size: 14px;
+    }
+    p {
+      font-size: .9rem;
+    }
+  }
+}
