@@ -1,0 +1,15 @@
+@import 'color';
+
+.layouts-main {
+  .header {
+    background: $color-blue;
+    padding: 1rem 0;
+    margin: 0 0 2rem;
+
+    .logo {
+      display: inline-block;
+      color: $color-white;
+      font-size: 1.3rem;
+    }
+  }
+}

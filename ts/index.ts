@@ -1,6 +1,4 @@
 import 'font-awesome/css/font-awesome.css';
-import '../scss/layout.scss';
-import '../scss/main.scss';
 
 import { configureRoutes } from './routes';
 import methodOverride from './utils/method-override';

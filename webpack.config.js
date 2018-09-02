@@ -15,7 +15,8 @@ plugins.push(new webpack.DefinePlugin({
 }));
 plugins.push(
     new MiniCssExtractPlugin({
-        filename: `${base_filename}.css`
+        filename: `${base_filename}.css`,
+        chunkFilename: "[name].css"
     })
 );
 if (DEBUG) {
@@ -39,7 +40,7 @@ const config = {
     entry: {
         'index': `${rootDir}/ts/index.ts`,
         'layout': `${rootDir}/scss/layout.scss`,
-        'main': `${rootDir}/scss/main.scss`,
+        'main': `${rootDir}/scss/main.scss`
     },
     output: {
         path: `${rootDir}/static/build`,
@@ -72,7 +73,7 @@ const config = {
             {
                 test: /\.s?css$/,
                 use: [
-                    DEBUG ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    MiniCssExtractPlugin.loader,
                     'css-loader',
                     'sass-loader',
                 ],

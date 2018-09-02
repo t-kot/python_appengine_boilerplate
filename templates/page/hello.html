@@ -1,0 +1,195 @@
+{% extends "layouts/main.html" %} {% set title='GAE+Python37 is now working!' %} {% block content -%}
+<div class="page-top" data-js-action='page-top'>
+  <div class="container">
+    <div class="row">
+      <div class="col-3">
+        <div class="list-group">
+          <a href="#structure" class="list-group-item list-group-item-action">File Structure</a>
+          <a href="#template" class="list-group-item list-group-item-action">Template</a>
+          <a href="#scss" class="list-group-item list-group-item-action">SCSS</a>
+          <a href="#ts" class="list-group-item list-group-item-action">TypeScript</a>
+          <a href="#csrf" class="list-group-item list-group-item-action">CSRF</a>
+          <a href="#helpers" class="list-group-item list-group-item-action">Helper</a>
+          <a href="#test" class="list-group-item list-group-item-action">Test</a>
+        </div>
+      </div>
+      <div class="col-9">
+        <div class="about">
+          <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+              <h1 class="display-5">Convention over configuration</h1>
+              <p class="lead">
+                Google App Engine is now supporting Python3.7 and releases Second Generation Runtime.
+                <br> This page describes GAE+Python3.7 best practices.
+              </p>
+            </div>
+          </div>
+          I recommend you to use
+          <ul>
+            <li>Flask</li>
+            <li>PostgreSQL</li>
+            <li>Google DataStore</li>
+            <li>Webpack</li>
+            <li>TypeScript</li>
+            <li>SCSS</li>
+            <li>Docker</li>
+          </ul>
+          <h3>Source</h3>
+          <a href="https://github.com/t-kot/python_appengine_templates" target='_blank'>https://github.com/t-kot/python_appengine_templates</a>
+          <h3>Author</h3>
+          <a target='_blank' href="https://twitter.com/tkotohata">@tkotohata</a>
+        </div>
+        <div class="structure" id="structure">
+          <h2>File Structure</h2>
+          <pre class='code'>
+├── app.yaml
+├── bin
+├── cert
+├── config
+├── docker-compose.yml
+├── .docker
+├── helpers # <b>Helper files</b>
+├── lib
+├── main.py
+├── package.json
+├── requirements.txt
+├── scss # <b>SCSS files</b>
+├── templates # <b>Template files</b>
+├── ts # <b>TypeScript files</b>
+├── tsconfig.json
+├── tslint.json
+├── views # <b>Blueprint files</b>
+├── webpack.config.js
+          </pre>
+        </div>
+        <div class="template" id="template">
+          <h2>Template</h2>
+          <p>HTML files for rendering.
+            <br>
+            <a href="http://jinja.pocoo.org/docs/2.10/">
+              Jinja2
+            </a>
+            is recommended.
+          </p>
+          <h3>Structures</h3>
+          <pre class="code">
+templates
+├── layouts
+│   ├── base.html
+│   └── main.html
+└── page
+    ├── hello.html
+    └── top.html
+          </pre>
+          <h4>Recommandations</h4>
+          <b>Always use <code>layouts/base.html</code> as global layout</b>
+          <p>
+            <code>layouts/base.html</code> loads combined css and js files and
+            loads site global configurations such as Google Analytics, view port, OGP tags.
+            <br>
+            I <b>SHOUDN'T</b> append any viewable tags to body tag in this file.
+          </p>
+          <b>Put page shared contents to <code>layouts/main.html</code></b>
+          <p>
+            If your page has page shared contents like
+            Global header, footer, or side bar,
+            you <b>SHOULD</b> write it to <code>layouts/main.html</code>.
+
+            It's not necessary to use <code>layouts/main.html</code> always so
+            if you have another page shared contents like admin page sidebar,
+            you can create <code>layouts/admin.html</code> file.
+          </p>
+        </div>
+        <div class="scss" id="scss">
+          <h2>SCSS</h2>
+          <h3>Structures</h3>
+          <pre class="code">
+scss
+├── color.scss
+├── layout.scss
+├── layouts
+│   └── main.scss
+├── main.scss
+└── page
+    └── top.scss
+          </pre>
+          <b>2 primary css main and layout</b>
+          <p>
+            There are 2 primary css
+            <code>main.scss</code> and <code>layout.scss</code>
+
+            By default both of them are included by all pages but
+            <code>main.scss</code> is loaded asynchronously and
+            <code>layout.scss</code> is put in head tag as inline element.
+
+            <br>
+            You <b>SHOULD</b> keep layout.scss thin. 
+          </p>
+          <b>Seperate your css by every pages</b>
+          <p>
+            You may have many pages.
+            <br>
+            When you have 3 pages that top page(<b>/</b>),
+            todo list page(<b>/todos</b>),
+            and todo detail page(<b>/todos/1</b>),
+            you <b>SHOULD</b> create
+            <code>page/top.scss</code>, <code>todos/index.scss</code>, <code>todos/show.scss</code>
+            and put them in <code>main.scss</code>.
+          </p>
+          <b>Wrap your css with namespace class</b>
+          <p>
+            Devide and conquer is important for css.
+            <br>
+            If you have <code>todos/index.scss</code> file, make sure to wrap it by <code>todos-index</code> class.
+          </p>
+        </div>
+        <div class="ts" id="ts">
+          <h2>TypeScript</h2>
+          <p>
+            TypeScript is recommendable for web page development.
+            It's good to use tslint together.
+          </p>
+          <h3>File Structure</h3>
+          <pre class="code">
+ts
+├── index.ts
+├── page
+│   └── top.ts
+├── routes.ts
+└── utils
+    ├── matches.js
+    └── method-override.js
+          </pre>
+          <b>Divide your page specific script</b>
+          <p>
+            If you want to run JavaScript in top page,
+            you <b>SHOULD</b> create <code>page/top.ts</code> and register it to <code>routes.ts</code>.
+            <br>
+            The routing code is very simple and manages JavaScript functions in key-value.
+            You can call it from HTML with <code>data-js-action</code> attribute.
+          </p>
+        </div>
+
+        <div class="others" id="others">
+          <h2>
+            Others
+          </h2>
+          <p>Under construction...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <style>
+    pre.code {
+      background: #eee;
+      padding: 1rem;
+    }
+    h2 {
+      margin: 2rem 0 1rem;
+    }
+    .others {
+      margin: 0 0 5rem;
+    }
+  </style>
+</div>
+{% endblock %}

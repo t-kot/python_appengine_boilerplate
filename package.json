@@ -26,7 +26,7 @@
   },
   "scripts": {
     "start": "npm run webpack-dev",
-    "webpack-dev": "NODE_ENV=development webpack-dev-server --host 0.0.0.0 --port 4001 --progress --profile --colors",
+    "webpack-dev": "NODE_ENV=development webpack-dev-server --host 0.0.0.0 --port 4001 --progress --profile --colors --watch",
     "build": "NODE_ENV=production webpack --progress --profile --colors"
   },
   "author": "atcoin-inc",
