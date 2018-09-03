@@ -23,5 +23,5 @@ def inline_style_tag(path):
     with open('static/build/webpack-manifest.json') as manifest:
         data = json.load(manifest)
         path = data[path]
-        path = re.sub(r'^\/', '', path)
+        path = re.sub(r'^\/static', 'static/build', path)
         return "<style type='text/css'>{}</style>".format(open(path).read())

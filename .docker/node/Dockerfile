@@ -20,7 +20,7 @@ RUN apk add \
 # https://status.npmjs.org/
 RUN echo '104.16.18.35 yarn.npmjs.org' >> /etc/hosts
 RUN echo '104.16.23.35 registry.npmjs.org' >> /etc/hosts
-RUN yarn install node-sass
+RUN yarn add node-sass
 
 ENV APP_HOME /app
 RUN mkdir $APP_HOME
