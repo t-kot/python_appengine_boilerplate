@@ -2,6 +2,12 @@
 
 This is GAE, Python3.7, Webpack, Docker boilerplate
 
+# Homepage
+
+<a href='https://mercurial-feat-215211.appspot.com/' target='_blank'>
+  https://mercurial-feat-215211.appspot.com/
+</a>
+
 # TODO
 
 ```

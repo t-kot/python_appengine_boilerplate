@@ -1,4 +1,5 @@
 #!/bin/sh
 
 alias dc='docker-compose'
+dc run --rm node yarn install
 dc up

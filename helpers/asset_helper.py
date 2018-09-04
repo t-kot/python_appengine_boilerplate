@@ -9,7 +9,7 @@ import pdb
 def webpack_url(path):
     env = os.getenv('APP_ENV', 'development')
     if env == "development":
-        return "http://localhost:4001/static/" + path
+        return "http://localhost:7001/static/" + path
 
     with open('static/build/webpack-manifest.json') as manifest:
         data = json.load(manifest)

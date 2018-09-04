@@ -26,5 +26,6 @@ ENV APP_HOME /app
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
 ADD package.json $APP_HOME
+RUN yarn install
 
 VOLUME $APP_HOME
